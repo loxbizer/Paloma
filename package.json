@@ -1,0 +1,36 @@
+{
+  "name": "xenoclash",
+  "version": "0.1.0",
+  "private": true,
+  "description": "XENOCLASH — 5v5 tactical FPS prototype (Aliens vs Humans). Valorant-inspired, fully 3D, futuristic.",
+  "author": "Paloma Studio",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "electron:dev": "vite build && electron .",
+    "dist": "vite build && electron-builder",
+    "dist:win": "vite build && electron-builder --win",
+    "dist:mac": "vite build && electron-builder --mac",
+    "dist:linux": "vite build && electron-builder --linux"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.4.0"
+  },
+  "build": {
+    "appId": "com.paloma.xenoclash",
+    "productName": "XENOCLASH",
+    "directories": { "output": "release" },
+    "files": ["dist/**/*", "electron/**/*"],
+    "win": { "target": ["nsis"], "artifactName": "XENOCLASH-Setup-${version}.${ext}" },
+    "mac": { "target": ["dmg"], "category": "public.app-category.games" },
+    "linux": { "target": ["AppImage"], "category": "Game" }
+  }
+}
