@@ -132,6 +132,7 @@ export class SpikeSystem {
     if (this._mesh.parent) this._mesh.parent.remove(this._mesh);
     entity.object3D.add(this._mesh);
     this._mesh.position.set(0, 1.12, 0.34);
+    this._mesh.rotation.set(0, 0, 0);
     this._mesh.scale.setScalar(0.62);
     this._mesh.visible = true;
   }
@@ -207,7 +208,7 @@ export class SpikeSystem {
     this._detachAt(dropPos);
     bus.emit('spike:dropped', { position: dropPos.clone() });
     const match = this._match();
-    if (match && match.playerEntity && match.playerEntity.team === (match.attackTeam || null)) {
+    if (match && match.playerEntity && match.playerEntity.team === match.attackTeam) {
       bus.emit('ui:notification', { text: 'Le Noyau de Singularité est au sol !', type: 'warn', duration: 3 });
     }
   }
