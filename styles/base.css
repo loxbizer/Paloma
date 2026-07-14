@@ -1,0 +1,47 @@
+/* Base — reset et écran de boot. L'UI du jeu vit dans ui.css */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #05060f;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #e8ecff;
+  user-select: none;
+}
+#game-canvas {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+#ui, #cinematic-layer {
+  position: fixed; inset: 0;
+  pointer-events: none;
+}
+#ui > *, #cinematic-layer > * { pointer-events: auto; }
+
+#boot-screen {
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, #0c1030 0%, #05060f 70%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 24px; z-index: 1000;
+  transition: opacity 0.6s ease;
+}
+#boot-screen.hidden { opacity: 0; pointer-events: none; }
+.boot-logo {
+  font-size: 64px; font-weight: 900; letter-spacing: 12px;
+  color: #e8ecff;
+  text-shadow: 0 0 30px rgba(0, 255, 200, 0.6);
+}
+.boot-logo span { color: #00ffc8; }
+.boot-bar {
+  width: 360px; height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px; overflow: hidden;
+}
+#boot-progress {
+  width: 0%; height: 100%;
+  background: linear-gradient(90deg, #00ffc8, #7b5cff);
+  transition: width 0.2s ease;
+}
+#boot-status { font-size: 13px; opacity: 0.6; letter-spacing: 2px; text-transform: uppercase; }

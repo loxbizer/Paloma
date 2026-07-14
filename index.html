@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XENOSTRIKE</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/ui.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./node_modules/three/build/three.module.js",
+      "three/addons/": "./node_modules/three/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="game-canvas"></canvas>
+  <div id="ui"></div>
+  <div id="cinematic-layer"></div>
+  <div id="boot-screen">
+    <div class="boot-logo">XENO<span>STRIKE</span></div>
+    <div class="boot-bar"><div id="boot-progress"></div></div>
+    <div id="boot-status">Initialisation…</div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

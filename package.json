@@ -1,0 +1,70 @@
+{
+  "name": "xenostrike",
+  "productName": "XENOSTRIKE",
+  "version": "0.1.0",
+  "description": "XENOSTRIKE — Jeu de tir tactique 5v5 futuriste : les Xénos (aliens) affrontent les Gardiens (humains). 3D temps réel, cinématiques, mécaniques inédites, free-to-play + boutique.",
+  "type": "module",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "node tools/dev-server.mjs",
+    "assets": "node tools/generate-assets.mjs",
+    "check": "node tools/check-all.mjs",
+    "dist": "electron-builder --publish never",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:linux": "electron-builder --linux --publish never",
+    "smoke": "node tools/smoke-test.mjs"
+  },
+  "dependencies": {
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "playwright-core": "^1.61.1"
+  },
+  "build": {
+    "appId": "com.paloma.xenostrike",
+    "productName": "XENOSTRIKE",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "tools/dev-server.mjs",
+      "node_modules/three/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "zip"
+      ],
+      "category": "Game"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
